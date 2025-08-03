@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Olidonna</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --verde-oliva: #556B2F;
+            --dorado-apagado: #C2A14D;
+            --blanco-puro: #ffffff;
+            --negro-suave: #1e1e1e;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Figtree", sans-serif !important;
+            background-color: var(--blanco-puro);
+            color: var(--negro-suave);
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--blanco-puro);
+            padding: 20px;
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header img {
+            height: 60px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        nav {
+            margin-top: 100px;
+            background-color: var(--dorado-apagado);
+            padding: 20px 0;
+            position: sticky;
+            top: 80px;
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 60px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--negro-suave);
+            font-weight: bold;
+            font-size: 1.2rem;
+            padding-top: 10px;
+        }
+
+        .scroll-banner {
+            background: var(--verde-oliva);
+            color: var(--blanco-puro);
+            text-align: center;
+            padding: 12px 0;
+            font-weight: bold;
+            font-size: 1.1rem;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .scroll-banner span {
+            display: inline-block;
+            white-space: nowrap;
+            animation: scrollText 18s linear infinite;
+        }
+
+        @keyframes scrollText {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .historia {
+            position: relative;
+            min-height: 300px;
+            background-image: url('banner.jpeg');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 20px;
+            text-align: center;
+            color: var(--blanco-puro);
+            overflow: hidden;
+        }
+
+        .historia::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+            z-index: 0;
+        }
+
+        .productos {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .carrusel-contenedor {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carrusel {
+            display: flex;
+            gap: 20px;
+            animation: scrollCarousel 30s linear infinite;
+            will-change: transform;
+        }
+
+        .producto-item {
+            flex: 0 0 auto;
+            width: 280px;
+            background-color: #fefefe;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .producto-item img {
+            width: auto;
+            height: 180px;
+            border-radius: 10px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .producto-item img:hover {
+            transform: scale(1.1);
+        }
+
+        .producto-item h3 {
+            margin: 10px 0 5px;
+            color: var(--verde-oliva);
+        }
+
+        .producto-item p {
+            margin: 5px 0 10px;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .producto-item {
+                width: 180px;
+            }
+
+            .carrusel {
+                animation-duration: 10s !important;
+            }
+
+        }
+
+        @keyframes scrollCarousel {
+            0% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                transform: translateX(-250%);
+            }
+        }
+
+        /* Duplicado visual para efecto seamless loop */
+        .carrusel::after {
+            content: none;
+        }
+
+        #mayorista-contacto {
+            padding: 80px;
+            background-image:
+                linear-gradient(to bottom, rgba(85, 107, 47, 0.85), rgba(194, 161, 77, 0.85)),
+                url('cocinera.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            text-align: center;
+            color: var(--blanco-puro);
+        }
+
+
+        #contacto {
+            position: relative;
+            background-image: url('img-6.jpg');
+            /* Cambiá por el nombre real */
+            background-size: cover;
+            background-position: center -900px;
+            color: var(--blanco-puro);
+            font-size: 1.2rem;
+            font-family: 'Figtree', sans-serif !important;
+            padding: 80px 20px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        #contacto::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+            z-index: 0;
+        }
+
+        #contacto h2,
+        .contacto-items,
+        .contacto-item,
+        .contacto-item a {
+            position: relative;
+            z-index: 1;
+        }
+
+        #contacto h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--blanco-puro);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .contacto-items {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .contacto-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            max-width: 400px;
+            width: 100%;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contacto-item a {
+            color: var(--blanco-puro);
+            text-decoration: underline;
+            transition: color 0.3s ease;
+            display: inline-block;
+            padding: 10px 22px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.10);
+            font-size: 1.08rem;
+        }
+
+        .contacto-item:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+
+        .icono-contacto {
+            width: 24px;
+            height: 24px;
+            filter: brightness(0) invert(1);
+            opacity: 0.85;
+        }
+
+        .whatsapp {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            animation: blink 1.5s infinite;
+            z-index: 1001;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .whatsapp img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .footer {
+            background-color: var(--verde-oliva);
+            min-height: 200px;
+            color: var(--blanco-puro);
+            text-align: center;
+            padding: 40px 20px;
+            font-family: 'Figtree', sans-serif !important;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('isologo-footer.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .footer-tagline {
+            font-size: 1rem;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .footer-copy {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+
+        .btn-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--dorado-apagado);
+            color: var(--blanco-puro);
+            padding: 10px 15px;
+            border-radius: 50%;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1002;
+        }
+
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 22px;
+            left: 40px;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: var(--verde-oliva);
+            z-index: 1100;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .historia {
+                padding-top: 150px;
+            }
+
+            nav {
+                display: none;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px 20px;
+                gap: 15px;
+                background-color: var(--dorado-apagado);
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                z-index: 1000;
+                margin-top: 0;
+            }
+
+            nav.show {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav a {
+                font-size: 1.1rem;
+                padding: 10px 0;
+            }
+
+            .producto-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .producto-item div {
+                max-width: 100%;
+            }
+        }
+
+        .formulario {
+            max-width: 600px;
+            margin: 30px auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .formulario input,
+        .formulario textarea {
+            padding: 12px 16px;
+            font-size: 1rem;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-family: 'Figtree', sans-serif !important;
+            transition: border-color 0.3s ease;
+        }
+
+        .formulario input:focus,
+        .formulario textarea:focus {
+            border-color: var(--verde-oliva);
+            outline: none;
+        }
+
+        .formulario button {
+            padding: 14px;
+            font-size: 1.1rem;
+            background-color: var(--verde-oliva);
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-weight: bold;
+        }
+
+        .formulario button:hover {
+            background-color: #6f8a3b;
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background-color: var(--verde-oliva);
+            color: var(--blanco-puro);
+            border: none;
+            border-radius: 6px;
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #6f8a3b;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--dorado-apagado);
+            color: var(--blanco-puro);
+            border: none;
+            border-radius: 6px;
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #b08f3c;
+            transform: translateY(-2px);
+        }
+
+        #catalogo {
+            padding: 60px 0 40px 0;
+            text-align: center;
+        }
+
+        #collage {
+            padding: 60px 20px;
+            background-color: #f8f8f8;
+            max-height: 1200px;
+            overflow: hidden;
+        }
+
+        .collage-columnas {
+            column-count: 3;
+            column-gap: 12px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .collage-columnas img {
+            width: 100%;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            display: block;
+            break-inside: avoid;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .collage-columnas img:hover {
+            transform: scale(1.03);
+        }
+
+        @media (max-width: 768px) {
+            .collage-columnas {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .collage-columnas {
+                column-count: 1;
+            }
+        }
+
+        #mayorista-contacto h2 {
+            line-height: 1.8;
+        }
+
+    </style>
+
+
+</head>
+
+<body>
+    <header>
+        <img src="logo.png" alt="Olidonna logo" style="height:60px; margin:0 auto; display:block;" />
+    </header>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+    <nav>
+        <a href="#productos">Nuestros Productos</a>
+        <a href="#catalogo">Ver Catálogo</a>
+        <a href="#mayorista-contacto">Mayoristas</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+
+    <section id="historia" class="historia">
+    </section>
+
+    <div class="scroll-banner">
+        <span>🚚 ENVIOS GRATIS EN CABA Y GBA 🚚 </span>
+    </div>
+
+    <section id="productos" class="productos">
+        <h2>Nuestros Productos</h2>
+        <div class="carrusel-contenedor">
+            <div class="carrusel" id="carrusel-productos">
+                <div class="producto-item">
+                    <img src="DSC_5508 (1).png" alt="Aceite Virgen 500ml">
+                    <h3>Aceite de Oliva Virgen 500 ml</h3>
+                    <p>Sabor intenso ideal para ensaladas.</p>
+                </div>
+                <div class="producto-item">
+                    <img src="DSC_55000 (1).png" alt="Aceite Virgen 1L">
+                    <h3>Aceite de Oliva Virgen 1 litro</h3>
+                    <p>Sabor intenso ideal para ensaladas.</p>
+                </div>
+                <div class="producto-item">
+                    <img src="DSC_5504 (2).png" alt="Aceite Extra Virgen 500ml">
+                    <h3>Aceite de Oliva Extra Virgen 500 ml</h3>
+                    <p>Frutado intenso con notas verdes.</p>
+                </div>
+                <div class="producto-item">
+                    <img src="DSC_5506 (1).png" alt="Aceite Extra Virgen 1L">
+                    <h3>Aceite de Oliva Extra Virgen 1 litro</h3>
+                    <p>Selección premium para cada comida.</p>
+                </div>
+                <!----Duplicados---->
+                <div class="producto-item">
+                    <img src="DSC_5508 (1).png" alt="Aceite Virgen 500ml">
+                    <h3>Aceite de Oliva Virgen 500 ml</h3>
+                    <p>Sabor intenso ideal para ensaladas.</p>
+                </div>
+                <div class="producto-item">
+                    <img src="DSC_55000 (1).png" alt="Aceite Virgen 1L">
+                    <h3>Aceite de Oliva Virgen 1 litro</h3>
+                    <p>Sabor intenso ideal para ensaladas.</p>
+                </div>
+                <div class="producto-item">
+                    <img src="DSC_5504 (2).png" alt="Aceite Extra Virgen 500ml">
+                    <h3>Aceite de Oliva Extra Virgen 500 ml</h3>
+                    <p>Frutado intenso con notas verdes.</p>
+                </div>
+                <div class="producto-item">
+                    <img src="DSC_5506 (1).png" alt="Aceite Extra Virgen 1L">
+                    <h3>Aceite de Oliva Extra Virgen 1 litro</h3>
+                    <p>Selección premium para cada comida.</p>
+                </div>
+                                <div class="producto-item">
+                    <img src="DSC_5508 (1).png" alt="Aceite Virgen 500ml">
+                    <h3>Aceite de Oliva Virgen 500 ml</h3>
+                    <p>Sabor intenso ideal para ensaladas.</p>
+                </div>
+                <div class="producto-item">
+                    <img src="DSC_55000 (1).png" alt="Aceite Virgen 1L">
+                    <h3>Aceite de Oliva Virgen 1 litro</h3>
+                    <p>Sabor intenso ideal para ensaladas.</p>
+                </div>
+                <div class="producto-item">
+                    <img src="DSC_5504 (2).png" alt="Aceite Extra Virgen 500ml">
+                    <h3>Aceite de Oliva Extra Virgen 500 ml</h3>
+                    <p>Frutado intenso con notas verdes.</p>
+                </div>
+                <div class="producto-item">
+                    <img src="DSC_5506 (1).png" alt="Aceite Extra Virgen 1L">
+                    <h3>Aceite de Oliva Extra Virgen 1 litro</h3>
+                    <p>Selección premium para cada comida.</p>
+                </div>
+                <div class="producto-item">
+                    <img src="DSC_5508 (1).png" alt="Aceite Virgen 500ml">
+                    <h3>Aceite de Oliva Virgen 500 ml</h3>
+                    <p>Sabor intenso ideal para ensaladas.</p>
+                </div>
+                <div class="producto-item">
+                    <img src="DSC_55000 (1).png" alt="Aceite Virgen 1L">
+                    <h3>Aceite de Oliva Virgen 1 litro</h3>
+                    <p>Sabor intenso ideal para ensaladas.</p>
+                </div>
+                <div class="producto-item">
+                    <img src="DSC_5504 (2).png" alt="Aceite Extra Virgen 500ml">
+                    <h3>Aceite de Oliva Extra Virgen 500 ml</h3>
+                    <p>Frutado intenso con notas verdes.</p>
+                </div>
+                <div class="producto-item">
+                    <img src="DSC_5506 (1).png" alt="Aceite Extra Virgen 1L">
+                    <h3>Aceite de Oliva Extra Virgen 1 litro</h3>
+                    <p>Selección premium para cada comida.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="catalogo">
+        <img src="catalogo.jpeg" alt="Catálogo Olidonna"
+            style="max-width: 95vw; width: 700px; border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.10); margin-bottom: 30px;">
+        <div>
+            <a href="catalogo.jpeg" target="_blank" class="btn-secondary">Ver Catálogo</a>
+        </div>
+    </section>
+
+    <section id="mayorista-contacto">
+
+        <h2 style="color: var(--blanco-puro); margin-bottom: 20px;">¿Tenés una tienda, comercio o sos distribuidor y
+            querés sumar nuestros productos?</h2>
+        <form id="form-mayorista"
+            style="max-width: 400px; margin: 0 auto; background: rgba(255,255,255,0.08); padding: 30px 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.10); display: flex; flex-direction: column; gap: 18px;">
+            <input type="text" name="nombre" placeholder="Nombre" required
+                style="padding: 12px; border-radius: 6px; border: none; font-size: 1rem; background: #fffbe9; color: var(--negro-suave);">
+            <input type="email" name="email" placeholder="Correo electrónico" required
+                style="padding: 12px; border-radius: 6px; border: none; font-size: 1rem; background: #fffbe9; color: var(--negro-suave);">
+            <textarea name="mensaje" placeholder="Contanos sobre tu tienda o consulta..." rows="4" required
+                style="padding: 12px; border-radius: 6px; border: none; font-size: 1rem; background: #fffbe9; color: var(--negro-suave);"></textarea>
+            <button type="submit" class="btn-primary">Enviar</button>
+        </form>
+
+    </section>
+    <section id="collage">
+        <div class="collage-columnas">
+            <img src="img-6.jpg" alt="">
+            <img src="img-1.jpg" alt="">
+            <img src="img-2.jpg" alt="">
+            <img src="img-7.jpg" alt="">
+            <img src="img-3.jpg" alt="">
+            <img src="img-4.jpg" alt="">
+            <img src="img-5.jpg" alt="">
+        </div>
+    </section>
+    <section id="contacto" class="contacto">
+        <h2>Contáctanos</h2>
+        <div class="contacto-items">
+            <div class="contacto-item">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/minutemailer.svg" alt="Email"
+                    class="icono-contacto">
+                <a href="mailto:info@olidonna.com">info@olidonna.com</a>
+            </div>
+            <div class="contacto-item">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/whatsapp.svg" alt="WhatsApp"
+                    class="icono-contacto">
+                <a href="https://wa.me/5491140306009" target="_blank">+54 9 11 4030-6009</a>
+            </div>
+            <div class="contacto-item">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram"
+                    class="icono-contacto">
+                <a href="https://www.instagram.com/aceite.olidonna" target="_blank">@aceite.olidonna</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="whatsapp">
+        <a href="https://wa.me/5491140306009" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        </a>
+    </div>
+
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="btn-top">↑</button>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-brand">Olidonna</p>
+            <p class="footer-tagline">Sitio diseñado artesanalmente como nuestros productos.</p>
+            <p class="footer-copy">©️ 2025 Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+
+    <script>
+        function enviarConsultaMayorista() {
+            const nombre = document.getElementById("nombre").value;
+            const email = document.getElementById("email").value;
+            const mensaje = document.getElementById("mensaje").value;
+
+            const asunto = encodeURIComponent("Consulta mayorista desde el sitio Olidonna");
+            const cuerpo = encodeURIComponent(`Nombre: ${nombre}\nEmail: ${email}\n\nMensaje:\n${mensaje}`);
+
+            window.location.href = `mailto:latranquilina.mayoristas@gmail.com?subject=${asunto}&body=${cuerpo}`;
+            return false;
+        }
+
+        // Formulario de contacto mayorista
+        document.getElementById('form-mayorista').onsubmit = function (e) {
+            e.preventDefault();
+            const nombre = this.nombre.value;
+            const email = this.email.value;
+            const mensaje = this.mensaje.value;
+            const asunto = encodeURIComponent('Consulta mayorista/distribuidor desde el sitio Olidonna');
+            const cuerpo = encodeURIComponent(`Nombre: ${nombre}\nEmail: ${email}\n\nMensaje:\n${mensaje}`);
+            window.location.href = `mailto:latranquilina.mayoristas@gmail.com?subject=${asunto}&body=${cuerpo}`;
+        };
+
+        function toggleMenu() {
+            const nav = document.querySelector('nav');
+            nav.classList.toggle('show');
+        }
+
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                const nav = document.querySelector('nav');
+                nav.classList.remove('show');
+            });
+        });
+        // Carrusel de productos deslizante infinito
+        const carrusel = document.getElementById("carrusel-productos");
+
+        // Duplicamos los elementos para scroll infinito real
+        carrusel.innerHTML += carrusel.innerHTML;
+
+        let scrollX = 0;
+        const speed = 0.5; // px por frame, ajustable
+
+        function scrollLoop() {
+            scrollX += speed;
+            if (scrollX >= carrusel.scrollWidth / 2) {
+                scrollX = 0;
+            }
+            carrusel.style.transform = `translateX(-${scrollX}px)`;
+            requestAnimationFrame(scrollLoop);
+        }
+
+        // Aplicamos estilos necesarios vía JS (por si no están en CSS)
+        carrusel.style.display = "flex";
+        carrusel.style.gap = "20px";
+        carrusel.style.willChange = "transform";
+
+        scrollLoop(); // Iniciamos el loop
+    </script>
+
+
+</body>
+
+</html>
