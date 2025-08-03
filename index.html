@@ -119,21 +119,14 @@
             text-align: center;
         }
 
-        .carrusel-contenedor {
-            overflow: hidden;
-            position: relative;
-        }
-
-        .carrusel {
-            display: flex;
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
-            animation: scrollCarousel 30s linear infinite;
-            will-change: transform;
+            padding: 20px;
         }
 
         .producto-item {
-            flex: 0 0 auto;
-            width: 280px;
             background-color: #fefefe;
             border: 1px solid #ccc;
             border-radius: 10px;
@@ -141,6 +134,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            overflow: hidden;
+            text-align: center;
+            box-sizing: border-box;
+            max-height: 300px;
+            min-width: 300px;
+            max-width: 500px;
         }
 
         .producto-item img {
@@ -158,11 +157,21 @@
         .producto-item h3 {
             margin: 10px 0 5px;
             color: var(--verde-oliva);
+            font-size: 1rem;
+            line-height: 1.2;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
 
         .producto-item p {
             margin: 5px 0 10px;
             font-style: italic;
+            font-size: 0.9rem;
+            line-height: 1.2;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
 
         @media (max-width: 768px) {
@@ -170,20 +179,6 @@
                 width: 180px;
             }
 
-            .carrusel {
-                animation-duration: 10s !important;
-            }
-
-        }
-
-        @keyframes scrollCarousel {
-            0% {
-                transform: translateX(0%);
-            }
-
-            100% {
-                transform: translateX(-250%);
-            }
         }
 
         /* Duplicado visual para efecto seamless loop */
@@ -209,7 +204,7 @@
             background-image: url('img-6.jpg');
             /* Cambiá por el nombre real */
             background-size: cover;
-            background-position: center -900px;
+            background-position: center;
             color: var(--blanco-puro);
             font-size: 1.2rem;
             font-family: 'Figtree', sans-serif !important;
@@ -388,8 +383,8 @@
         .menu-toggle {
             display: none;
             position: fixed;
-            top: 22px;
-            left: 40px;
+            top: 30px; /* Move slightly down */
+            left: 30px; /* Move slightly to the left */
             font-size: 2rem;
             background: none;
             border: none;
@@ -569,6 +564,48 @@
             line-height: 1.8;
         }
 
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .slider-wrapper {
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.3s ease;
+            width: calc(33.333% * 4); /* Ajustar el ancho total del slider */
+        }
+
+        .producto-item {
+            flex: 0 0 calc(33.333% - 20px);
+            margin: 0 10px;
+            box-sizing: border-box;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
     </style>
 
 
@@ -601,94 +638,41 @@
 
     <section id="productos" class="productos">
         <h2>Nuestros Productos</h2>
-        <div class="carrusel-contenedor">
-            <div class="carrusel" id="carrusel-productos">
-                <div class="producto-item">
-                    <a href="https://www.mercadolibre.com.ar/aceite-de-oliva-virgen-olidonna-12-lt/up/MLAU2882524631" target="_blank" style="text-decoration:none; color:inherit;">
-                        <img src="DSC_5508 (1).png" alt="Aceite Virgen 500ml">
-                        <h3>Aceite de Oliva Virgen 500 ml</h3>
-                        <p>Sabor intenso ideal para ensaladas.</p>
-                    </a>
-                </div>
-                <div class="producto-item">
-                    <a href="https://www.mercadolibre.com.ar/aceite-de-oliva-virgen-1-lt-olidonna/up/MLAU3340695714" target="_blank" style="text-decoration:none; color:inherit;">
-                        <img src="DSC_55000 (1).png" alt="Aceite Virgen 1L">
-                        <h3>Aceite de Oliva Virgen 1 litro</h3>
-                        <p>Sabor intenso ideal para ensaladas.</p>
-                    </a>
-                </div>
-                <div class="producto-item">
-                    <a href="https://www.mercadolibre.com.ar/aceite-de-oliva-extra-virgen-12-litro-olidonna/up/MLAU3341928648" target="_blank" style="text-decoration:none; color:inherit;">
-                        <img src="DSC_5504 (2).png" alt="Aceite Extra Virgen 500ml">
-                        <h3>Aceite de Oliva Extra Virgen 500 ml</h3>
-                        <p>Frutado intenso con notas verdes.</p>
-                    </a>
-                </div>
-                <div class="producto-item">
-                    <a href="https://www.mercadolibre.com.ar/aceite-de-oliva-extra-virgen-12-litro-olidonna/up/MLAU3341928648" target="_blank" style="text-decoration:none; color:inherit;">
-                        <img src="DSC_5506 (1).png" alt="Aceite Extra Virgen 1L">
-                        <h3>Aceite de Oliva Extra Virgen 1 litro</h3>
-                        <p>Selección premium para cada comida.</p>
-                    </a>
-                </div>
-                <!----Duplicados---->
-                <div class="producto-item">
-                    <a href="https://www.mercadolibre.com.ar/aceite-de-oliva-virgen-olidonna-12-lt/up/MLAU2882524631" target="_blank" style="text-decoration:none; color:inherit;">
-                        <img src="DSC_5508 (1).png" alt="Aceite Virgen 500ml">
-                        <h3>Aceite de Oliva Virgen 500 ml</h3>
-                        <p>Sabor intenso ideal para ensaladas.</p>
-                    </a>
-                </div>
-                <div class="producto-item">
-                    <a href="https://www.mercadolibre.com.ar/aceite-de-oliva-virgen-1-lt-olidonna/up/MLAU3340695714" target="_blank" style="text-decoration:none; color:inherit;">
-                        <img src="DSC_55000 (1).png" alt="Aceite Virgen 1L">
-                        <h3>Aceite de Oliva Virgen 1 litro</h3>
-                        <p>Sabor intenso ideal para ensaladas.</p>
-                    </a>
-                </div>
-                <div class="producto-item">
-                    <a href="https://www.mercadolibre.com.ar/aceite-de-oliva-extra-virgen-12-litro-olidonna/up/MLAU3341928648" target="_blank" style="text-decoration:none; color:inherit;">
-                        <img src="DSC_5504 (2).png" alt="Aceite Extra Virgen 500ml">
-                        <h3>Aceite de Oliva Extra Virgen 500 ml</h3>
-                        <p>Frutado intenso con notas verdes.</p>
-                    </a>
-                </div>
-                <div class="producto-item">
-                    <a href="https://www.mercadolibre.com.ar/aceite-de-oliva-extra-virgen-12-litro-olidonna/up/MLAU3341928648" target="_blank" style="text-decoration:none; color:inherit;">
-                        <img src="DSC_5506 (1).png" alt="Aceite Extra Virgen 1L">
-                        <h3>Aceite de Oliva Extra Virgen 1 litro</h3>
-                        <p>Selección premium para cada comida.</p>
-                    </a>
-                </div>
-                                <div class="producto-item">
-                    <a href="https://www.mercadolibre.com.ar/aceite-de-oliva-virgen-olidonna-12-lt/up/MLAU2882524631" target="_blank" style="text-decoration:none; color:inherit;">
-                        <img src="DSC_5508 (1).png" alt="Aceite Virgen 500ml">
-                        <h3>Aceite de Oliva Virgen 500 ml</h3>
-                        <p>Sabor intenso ideal para ensaladas.</p>
-                    </a>
-                </div>
-                <div class="producto-item">
-                    <a href="https://www.mercadolibre.com.ar/aceite-de-oliva-virgen-1-lt-olidonna/up/MLAU3340695714" target="_blank" style="text-decoration:none; color:inherit;">
-                        <img src="DSC_55000 (1).png" alt="Aceite Virgen 1L">
-                        <h3>Aceite de Oliva Virgen 1 litro</h3>
-                        <p>Sabor intenso ideal para ensaladas.</p>
-                    </a>
-                </div>
-                <div class="producto-item">
-                    <a href="https://www.mercadolibre.com.ar/aceite-de-oliva-extra-virgen-12-litro-olidonna/up/MLAU3341928648" target="_blank" style="text-decoration:none; color:inherit;">
-                        <img src="DSC_5504 (2).png" alt="Aceite Extra Virgen 500ml">
-                        <h3>Aceite de Oliva Extra Virgen 500 ml</h3>
-                        <p>Frutado intenso con notas verdes.</p>
-                    </a>
-                </div>
-                <div class="producto-item">
-                    <a href="https://www.mercadolibre.com.ar/aceite-de-oliva-extra-virgen-12-litro-olidonna/up/MLAU3341928648" target="_blank" style="text-decoration:none; color:inherit;">
-                        <img src="DSC_5506 (1).png" alt="Aceite Extra Virgen 1L">
-                        <h3>Aceite de Oliva Extra Virgen 1 litro</h3>
-                        <p>Selección premium para cada comida.</p>
-                    </a>
+        <div class="slider-container">
+            <button class="slider-btn prev">&#10094;</button>
+            <div class="slider-wrapper">
+                <div class="slider">
+                    <div class="producto-item">
+                        <a href="https://www.mercadolibre.com.ar/aceite-de-oliva-virgen-olidonna-12-lt/up/MLAU2882524631" target="_blank" style="text-decoration:none; color:inherit;">
+                            <img src="DSC_5508 (1).png" alt="Aceite Virgen 500ml">
+                            <h3>Aceite de Oliva Virgen 500 ml</h3>
+                            <p>Sabor intenso ideal para ensaladas.</p>
+                        </a>
+                    </div>
+                    <div class="producto-item">
+                        <a href="https://www.mercadolibre.com.ar/aceite-de-oliva-virgen-1-lt-olidonna/up/MLAU3340695714" target="_blank" style="text-decoration:none; color:inherit;">
+                            <img src="DSC_55000 (1).png" alt="Aceite Virgen 1L">
+                            <h3>Aceite de Oliva Virgen 1 litro</h3>
+                            <p>Sabor intenso ideal para ensaladas.</p>
+                        </a>
+                    </div>
+                    <div class="producto-item">
+                        <a href="https://www.mercadolibre.com.ar/aceite-de-oliva-extra-virgen-12-litro-olidonna/up/MLAU3341928648" target="_blank" style="text-decoration:none; color:inherit;">
+                            <img src="DSC_5504 (2).png" alt="Aceite Extra Virgen 500ml">
+                            <h3>Aceite de Oliva Extra Virgen 500 ml</h3>
+                            <p>Frutado intenso con notas verdes.</p>
+                        </a>
+                    </div>
+                    <div class="producto-item">
+                        <a href="https://www.mercadolibre.com.ar/aceite-de-oliva-extra-virgen-12-litro-olidonna/up/MLAU3341928648" target="_blank" style="text-decoration:none; color:inherit;">
+                            <img src="DSC_5506 (1).png" alt="Aceite Extra Virgen 1L">
+                            <h3>Aceite de Oliva Extra Virgen 1 litro</h3>
+                            <p>Selección premium para cada comida.</p>
+                        </a>
+                    </div>
                 </div>
             </div>
+            <button class="slider-btn next">&#10095;</button>
         </div>
     </section>
 
@@ -800,30 +784,61 @@
                 nav.classList.remove('show');
             });
         });
-        // Carrusel de productos deslizante infinito
-        const carrusel = document.getElementById("carrusel-productos");
 
-        // Duplicamos los elementos para scroll infinito real
-        carrusel.innerHTML += carrusel.innerHTML;
+        const slider = document.querySelector('.slider');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        const itemsToShow = 3;
+        const totalItems = slider.children.length;
 
-        let scrollX = 0;
-        const speed = 0.5; // px por frame, ajustable
+        // Duplicar los elementos para el efecto de perpetuidad
+        const sliderClone = slider.innerHTML;
+        slider.innerHTML += sliderClone;
 
-        function scrollLoop() {
-            scrollX += speed;
-            if (scrollX >= carrusel.scrollWidth / 2) {
-                scrollX = 0;
-            }
-            carrusel.style.transform = `translateX(-${scrollX}px)`;
-            requestAnimationFrame(scrollLoop);
+        let currentIndex = 0;
+        const itemWidth = slider.children[0].offsetWidth;
+
+        function updateSliderPosition() {
+            slider.style.transition = 'transform 0.3s ease';
+            slider.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
         }
 
-        // Aplicamos estilos necesarios vía JS (por si no están en CSS)
-        carrusel.style.display = "flex";
-        carrusel.style.gap = "20px";
-        carrusel.style.willChange = "transform";
+        function slideNext() {
+            if (currentIndex < totalItems) {
+                currentIndex++;
+            } else {
+                slider.style.transition = 'none';
+                currentIndex = 0;
+                slider.style.transform = `translateX(0px)`;
+                setTimeout(() => {
+                    currentIndex++;
+                    updateSliderPosition();
+                }, 50);
+                return;
+            }
+            updateSliderPosition();
+        }
 
-        scrollLoop(); // Iniciamos el loop
+        function slidePrev() {
+            if (currentIndex > 0) {
+                currentIndex--;
+            } else {
+                slider.style.transition = 'none';
+                currentIndex = totalItems;
+                slider.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+                setTimeout(() => {
+                    currentIndex--;
+                    updateSliderPosition();
+                }, 50);
+                return;
+            }
+            updateSliderPosition();
+        }
+
+        nextBtn.addEventListener('click', slideNext);
+        prevBtn.addEventListener('click', slidePrev);
+
+        setInterval(slideNext, 3000);
     </script>
 
 
