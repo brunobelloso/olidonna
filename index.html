@@ -383,8 +383,10 @@
         .menu-toggle {
             display: none;
             position: fixed;
-            top: 30px; /* Move slightly down */
-            left: 30px; /* Move slightly to the left */
+            top: 30px;
+            /* Move slightly down */
+            left: 30px;
+            /* Move slightly to the left */
             font-size: 2rem;
             background: none;
             border: none;
@@ -532,10 +534,23 @@
         }
 
         .collage-columnas {
-            column-count: 3;
+            column-count: 1;
+            /* Para pantallas pequeñas por defecto */
             column-gap: 12px;
             max-width: 1200px;
             margin: 0 auto;
+        }
+
+        @media (min-width: 410px) {
+            .collage-columnas {
+                column-count: 2;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .collage-columnas {
+                column-count: 3;
+            }
         }
 
         .collage-columnas img {
@@ -550,13 +565,6 @@
 
         .collage-columnas img:hover {
             transform: scale(1.03);
-        }
-
-
-        @media (max-width: 480px) {
-            .collage-columnas {
-                column-count: 2;
-            }
         }
 
         #mayorista-contacto h2 {
@@ -577,7 +585,8 @@
         .slider {
             display: flex;
             transition: transform 0.3s ease;
-            width: calc(33.333% * 4); /* Ajustar el ancho total del slider */
+            width: calc(33.333% * 4);
+            /* Ajustar el ancho total del slider */
         }
 
         .producto-item {
@@ -642,28 +651,32 @@
             <div class="slider-wrapper">
                 <div class="slider">
                     <div class="producto-item">
-                        <a href="https://www.mercadolibre.com.ar/aceite-de-oliva-virgen-olidonna-12-lt/up/MLAU2882524631" target="_blank" style="text-decoration:none; color:inherit;">
+                        <a href="https://www.mercadolibre.com.ar/aceite-de-oliva-virgen-olidonna-12-lt/up/MLAU2882524631"
+                            target="_blank" style="text-decoration:none; color:inherit;">
                             <img src="DSC_5508 (1).png" alt="Aceite Virgen 500ml">
                             <h3>Aceite de Oliva Virgen 500 ml</h3>
                             <p>Sabor intenso ideal para ensaladas.</p>
                         </a>
                     </div>
                     <div class="producto-item">
-                        <a href="https://www.mercadolibre.com.ar/aceite-de-oliva-virgen-1-lt-olidonna/up/MLAU3340695714" target="_blank" style="text-decoration:none; color:inherit;">
+                        <a href="https://www.mercadolibre.com.ar/aceite-de-oliva-virgen-1-lt-olidonna/up/MLAU3340695714"
+                            target="_blank" style="text-decoration:none; color:inherit;">
                             <img src="DSC_55000 (1).png" alt="Aceite Virgen 1L">
                             <h3>Aceite de Oliva Virgen 1 litro</h3>
                             <p>Sabor intenso ideal para ensaladas.</p>
                         </a>
                     </div>
                     <div class="producto-item">
-                        <a href="https://www.mercadolibre.com.ar/aceite-de-oliva-extra-virgen-12-litro-olidonna/up/MLAU3341928648" target="_blank" style="text-decoration:none; color:inherit;">
+                        <a href="https://www.mercadolibre.com.ar/aceite-de-oliva-extra-virgen-12-litro-olidonna/up/MLAU3341928648"
+                            target="_blank" style="text-decoration:none; color:inherit;">
                             <img src="DSC_5504 (2).png" alt="Aceite Extra Virgen 500ml">
                             <h3>Aceite de Oliva Extra Virgen 500 ml</h3>
                             <p>Frutado intenso con notas verdes.</p>
                         </a>
                     </div>
                     <div class="producto-item">
-                        <a href="https://www.mercadolibre.com.ar/aceite-de-oliva-extra-virgen-12-litro-olidonna/up/MLAU3341928648" target="_blank" style="text-decoration:none; color:inherit;">
+                        <a href="https://www.mercadolibre.com.ar/aceite-de-oliva-extra-virgen-12-litro-olidonna/up/MLAU3341928648"
+                            target="_blank" style="text-decoration:none; color:inherit;">
                             <img src="DSC_5506 (1).png" alt="Aceite Extra Virgen 1L">
                             <h3>Aceite de Oliva Extra Virgen 1 litro</h3>
                             <p>Selección premium para cada comida.</p>
@@ -679,7 +692,8 @@
         <img src="catalogo.jpeg" alt="Catálogo Olidonna"
             style="max-width: 95vw; width: 700px; border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.10); margin-bottom: 30px;">
         <div>
-            <a href="https://drive.google.com/file/d/1k0qqz8szn2aIcIdQoFJifKa5fKYVMc23/view?usp=sharing" target="_blank" class="btn-secondary">Ver Catálogo</a>
+            <a href="https://drive.google.com/file/d/1k0qqz8szn2aIcIdQoFJifKa5fKYVMc23/view?usp=sharing" target="_blank"
+                class="btn-secondary">Ver Catálogo</a>
         </div>
     </section>
 
